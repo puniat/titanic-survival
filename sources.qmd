@@ -1,0 +1,9 @@
+---
+title: "Sources"
+---
+
+The data for this project was sourced from Stanford University's 'titanic.csv' dataset (selecting this dataset on the website will download the dataset on your device), containing information on passengers' demographics, class, and survival status. 
+
+<https://web.stanford.edu/class/archive/cs/cs109/cs109.1166/stuff/>
+
+The data was cleaned by handling missing values, formatting columns appropriately, and removing irrelevant information, such as passenger names. These steps ensured a clean and consistent dataset, enabling accurate analysis of the correlation between passenger class and survival status on the Titanic.

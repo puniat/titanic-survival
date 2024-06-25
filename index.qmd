@@ -1,0 +1,49 @@
+---
+title: "Correlation between Passenger Class and Survival Status on the Titanic"
+---
+
+The RMS Titanic, a British passenger liner that sank on its maiden voyage in April 1912 after hitting an iceberg, remains one of the most infamous maritime disasters in history. Analyzing this data shows that passenger class had a significant impact on the survival counts on the Titanic.
+
+The following data was pulled from [Stanford University's](https://web.stanford.edu/class/archive/cs/cs109/cs109.1166/stuff/) 'titanic.csv' dataset. This dataset provides comprehensive information on the passengers aboard the Titanic, including details such as age, gender, class, name, and survival status. The dataset was used to create a graph illustrating the survival counts by passenger class on the Titanic in a clear and informative manner. 
+
+**Class 1:** Upper Class  
+**Class 2:** Middle Class  
+**Class 3:** Lower class  
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+# Load necessary libraries
+library(ggplot2)
+library(dplyr)
+```
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+# Read the Titanic dataset
+titanic_data <- read.csv("titanicdata.csv")
+```
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+# Create a bar plot to visualize survival counts by passenger class
+ggplot(titanic_data, aes(x = Pclass, fill = as.factor(Survived))) +
+  # Use a dodged bar plot to separate bars by survival status within each passenger class
+  geom_bar(position = "dodge") +
+  # Add titles and labels to the plot
+  labs(title = "Survival Counts by Passenger Class on the Titanic", 
+       x = "Passenger Class", 
+       y = "Passenger Count") +
+  # Customize the fill colors for the survival status
+  scale_fill_manual(values = c("#ffbfbf", "#bfcfff"), 
+                    # had to change the color values of the graph: comments saying they were too bright and may cause glare
+                    labels = c("Did not survive", "Survived"), 
+                    name = "Survival Status") +
+  # Apply a minimal theme to the plot
+  theme_minimal()
+```
+
+The number of survivors was roughly similar across passenger classes (this is a partial dataset, with variations in the FULL Titanic passenger data), but non-survivors showed a slight increase from Class 1 to Class 2 and a significant increase from Class 2 to Class 3.

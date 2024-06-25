@@ -1,0 +1,4 @@
+- source: project
+  quarto-pub:
+    - id: c522d671-2e37-4115-900e-9594f2db6173
+      url: 'https://puniat.quarto.pub/correlation-of-passenger-demographics-to-survival-status-on-the-titanic'

@@ -1,0 +1,62 @@
+---
+title: "Correlation between other Passenger Demographics (Age and Gender) and Survival Status on the Titanic"
+---
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+# Load necessary libraries
+library(ggplot2)
+library(dplyr)
+# Read the Titanic dataset
+data <- read.csv("titanic-data.csv")
+```
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+# Group data by gender and survival status, then count the occurrences
+gender_survival_counts <- data %>%
+  group_by(Sex, Survived) %>%
+  summarise(Count = n()) %>%
+  ungroup()
+
+# Convert the 'Survived' column to a factor with labels for better readability
+gender_survival_counts$Survived <- factor(gender_survival_counts$Survived, levels = c(0, 1), labels = c("Did not survive", "Survived"))
+
+# Create a bar plot to visualize survival counts by gender
+ggplot(gender_survival_counts, aes(x = Sex, y = Count, fill = Survived)) +
+  # Use an identity stat to plot the pre-summarized counts and dodge position to place bars side by side
+  geom_bar(stat = "identity", position = position_dodge()) +
+  # changed from stacked bar plot to dodged plot to better display the difference in numbers by gender, instead of stacking, each category is shown side by side so it is more comprehensible
+  # Add titles and labels to the plot
+  labs(title = "Survival Counts by Gender on the Titanic", 
+       x = "Gender", 
+       y = "Count", 
+       fill = "Survival Stat") +
+  # Customize the fill colors for the survival status
+  scale_fill_manual(values = c("#ffbfbf", "#bfcfff")) +
+  # Apply a minimal theme to the plot
+  theme_minimal()
+```
+The number of survivors was greater for females than males, and the number of deaths was much higher for males. This corresponds to well-known historical information, as women were prioritized when leaving the ship, resulting in more survivals for females and fewer for males.
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+# Create a histogram to visualize the age distribution by survival status
+ggplot(data, aes(x = Age, fill = as.factor(Survived))) +
+  # Add histogram bars with a bin width of 5 years, setting transparency to 0.5 and overlapping the bars
+  geom_histogram(binwidth = 5, alpha = 0.5, position = "identity") +
+  # Add titles and labels to the plot
+  labs(title = "Age Distribution by Survival Status on the Titanic", 
+       x = "Age", 
+       y = "Count") +
+  # Customize the fill colors for the survival status
+  scale_fill_manual(values = c("#ffbfbf", "#bfcfff"), 
+                    labels = c("Did not survive", "Survived"), 
+                    name = "Survival Status") +
+  # Apply a minimal theme to the plot
+  theme_minimal()
+```
+Survival numbers were the highest for ages 20 to 40, with significant numbers also evident in ages 0 to 10 and 40 to 50, although the ages with higher survival numbers also had higher death counts.

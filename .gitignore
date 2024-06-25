@@ -1,0 +1,12 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+_site/
+*Rproj
+graphs_files/
+site_libs/
+titanic-data.csv
+titanicdata.csv
+
+/.quarto/

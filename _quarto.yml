@@ -1,0 +1,22 @@
+project:
+  type: website
+
+website:
+  title: "Correlation of Passenger Demographics to Survival Status on the Titanic"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: graphs.qmd
+        text: Graphs
+      - href: sources.qmd
+        text: Sources
+      - href: about.qmd
+        text: About
+
+format:
+  html:
+    theme: simplex
+    css: styles.css
+    toc: true
+	

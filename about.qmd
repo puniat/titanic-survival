@@ -1,0 +1,9 @@
+---
+title: "About"
+---
+
+I'm Tulika, a highschooler at CJCP (Class of 2027). Take a look at my [Github](https://github.com/puniat), and feel free to contact me at puniatulika@gmail.com.
+
+[My project](https://github.com/puniat/titanic-survival) is about the correlation of passenger class to survival status on the Titanic.
+
+This project was created as a part of [Kane’s Data Science Bootcamp](https://bootcamp.davidkane.info/).
